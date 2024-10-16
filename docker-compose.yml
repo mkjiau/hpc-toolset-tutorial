@@ -163,6 +163,9 @@ services:
     command: ["serve"]
     hostname: coldfront
     container_name: coldfront
+    # environment:
+    #   - ONDEMAND_URL=https://ondemand.jiau.dev
+    #   - OIDC_OP_AUTHORIZATION_ENDPOINT="https://dex.jiau.dev/auth"
     networks:
       - compute
     volumes:
@@ -197,7 +200,8 @@ services:
     expose:
       - "22"
     ports:
-      - "127.0.0.1:3443:3443"
+      - "127.0.0.1:3443:443"
+      # - "127.0.0.1:3443:3443"
       - "127.0.0.1:5554:5554"
     depends_on:
       - ldap

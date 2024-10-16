@@ -27,23 +27,32 @@ tee /etc/ood/config/ood_portal.yml <<EOF
 #
 # Portal configuration
 #
-listen_addr_port:
-  - '3443'
-servername: localhost
-port: 3443
+# listen_addr_port:
+#   - '443'
+#  - '3443'
+# listen_addr_port: null
+proxy_server: ondemand.jiau.dev
+servername: ondemand.jiau.dev
+port: 443
+# port: 3443
 ssl:
   - 'SSLCertificateFile "/etc/pki/tls/certs/localhost.crt"'
   - 'SSLCertificateKeyFile "/etc/pki/tls/private/localhost.key"'
+# ssl: null
+security_strict_transport: false
+# oidc_provider_metadata_url: "https://example.com:5554/.well-known/openid-configuration"
+oidc_uri: "/oidc"
 node_uri: "/node"
 rnode_uri: "/rnode"
 oidc_scope: "openid profile email groups"
-dex_uri: false
+#dex_uri: false
+dex_uri: "/dex"
 dex:
   client_redirect_uris:
     - "https://localhost:4443/simplesaml/module.php/authoidcoauth2/linkback.php"
     - "https://localhost:2443/oidc/callback/"
   client_secret: 334389048b872a533002b34d73f8c29fd09efc50
-  client_id: localhost
+  client_id: ondemand.jiau.dev
   connectors:
     - type: ldap
       id: ldap
